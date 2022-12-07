@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""This module defines the canUnlockAll method"""
+
+
 def canUnlockAll(boxes):
+    """This method determines if all the boxes can be opened"""
     unLockBoxes = []
     for box in boxes:
         index = boxes.index(box)
