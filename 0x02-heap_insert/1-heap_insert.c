@@ -54,7 +54,7 @@ heap_t *find_children(heap_t *tree, size_t index, size_t size)
 }
 
 /**
- * find_parent_location - function that finds where to insert the new node
+ * find_parent_location - function that finds the parent position
  * @tree: a pointer to the beginning of the tree
  * @new: the new node to insert
  * Return: the position of the parent
