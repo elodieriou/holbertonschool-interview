@@ -29,7 +29,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * find_parent_location - function that finds children
+ * find_parent_location - function that find the parent thanks children
  * @tree: a pointer to the beginning of the tree
  * @index: the node to check
  * @size: the number of node in the tree
@@ -54,7 +54,7 @@ heap_t *find_parent_location(heap_t *tree, size_t index, size_t size)
 }
 
 /**
- * find_parent_location - function that inserts the node at good place
+ * insert_node - function that inserts the node at good place
  * @tree: a pointer to the beginning of the tree
  * @new: the new node to insert
  * Return: the position of the parent
