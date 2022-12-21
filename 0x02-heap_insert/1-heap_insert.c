@@ -29,7 +29,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * find_children - function that finds children
+ * find_parent_location - function that finds children
  * @tree: a pointer to the beginning of the tree
  * @index: the node to check
  * @size: the number of node in the tree
@@ -37,7 +37,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
  *         right if child on right
  *         NULL if children on left and right
  */
-heap_t *find_children(heap_t *tree, size_t index, size_t size)
+heap_t *find_parent_location(heap_t *tree, size_t index, size_t size)
 {
 	heap_t *left_child, *right_child;
 
@@ -47,25 +47,25 @@ heap_t *find_children(heap_t *tree, size_t index, size_t size)
 	if (index > size)
 		return (NULL);
 
-	left_child = find_children(tree->left, 2 * index + 1, size);
-	right_child = find_children(tree->right, 2 * index + 2, size);
+	left_child = find_parent_location(tree->left, 2 * index + 1, size);
+	right_child = find_parent_location(tree->right, 2 * index + 2, size);
 
 	return (left_child ? left_child : (right_child ? right_child : NULL));
 }
 
 /**
- * find_parent_location - function that finds the parent position
+ * find_parent_location - function that inserts the node at good place
  * @tree: a pointer to the beginning of the tree
  * @new: the new node to insert
  * Return: the position of the parent
  */
-heap_t *find_parent_location(heap_t *tree, heap_t *new)
+heap_t *insert_node(heap_t *tree, heap_t *new)
 {
 	heap_t *parent;
 	size_t size;
 
 	size = binary_tree_size(tree);
-	parent = find_children(tree, 0, (size - 1) / 2);
+	parent = find_parent_location(tree, 0, (size - 1) / 2);
 
 	if (parent->left == NULL)
 		parent->left = new;
@@ -98,7 +98,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		return (new);
 	}
 
-	parent_location = find_parent_location(*root, new);
+	parent_location = insert_node(*root, new);
 	new->parent = parent_location;
 	current = new;
 
