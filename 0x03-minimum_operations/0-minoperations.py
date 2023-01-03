@@ -6,7 +6,9 @@ def minOperations(n):
     """This method defines the minimum operation"""
 
     numberOperation = 0
+
     while n > 1:
+        factorFound = False
 
         if n % 2 == 0:
             numberOperation += 2
@@ -16,11 +18,14 @@ def minOperations(n):
             i = 3
             while i * i <= n:
                 if n % i == 0:
+                    factorFound = True
                     n = n // i
                     numberOperation += i
                     break
                 i += 2
-            numberOperation += n
-            n //= n
+
+            if not factorFound:
+                numberOperation += n
+                n //= n
 
     return numberOperation
