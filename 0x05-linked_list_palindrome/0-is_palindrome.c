@@ -34,7 +34,7 @@ int is_palindrome(listint_t **head)
 	if (len > 3)
 		reverse_listint(&newHead);
 
-	return (compare_listint(*head, &*newHead));
+	return (is_identical_listint(*head, &*newHead));
 }
 
 /**
@@ -76,12 +76,12 @@ void reverse_listint(listint_t **head)
 }
 
 /**
- * compare_listint - function that check if two linked list are identical
+ * is_identical_listint - function that check if two linked list are identical
  * @head1: the beginning of the first linked list
  * @head2: the beginning of the second linked list
  * Return: true if the lists are identical, false otherwise
  */
-bool compare_listint(listint_t *head1, listint_t *head2)
+bool is_identical_listint(listint_t *head1, listint_t *head2)
 {
 	listint_t *tmp1 = head1, *tmp2 = head2;
 
