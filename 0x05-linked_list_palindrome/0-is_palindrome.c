@@ -8,13 +8,9 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *slow, *fast, *end = NULL, *newHead = NULL;
-	int len;
+	int len = size_listint(&*head);
 
-	if (*head == NULL || head == NULL)
-		return (1);
-
-	len = size_listint(&*head);
-	if (len == 1)
+	if (*head == NULL || head == NULL || (*head)->next == NULL)
 		return (1);
 
 	slow = fast = *head;
