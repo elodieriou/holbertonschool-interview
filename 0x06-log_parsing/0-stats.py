@@ -18,9 +18,9 @@ countStatus = {
 totalSize = 0
 countLine = 0
 
-regex = r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - "
+regex = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - "
 regex += r"\[[\d\-:.\s]+\] \"[\w\s\/.]+\" "
-regex += r"\d{1,3} \d{1,3}$"
+regex += r"\d{1,3} \d{1,3}"
 
 
 def print_stats(total_size):
@@ -31,27 +31,27 @@ def print_stats(total_size):
             print("{}: {}".format(code, countStatus[code]))
 
 
-try:
-    for line in stdin:
-        if re.match(regex, line):
-            parseLine = line.split()
-            status = int(parseLine[7])
-            size = int(parseLine[8])
+if __name__ == "__main__":
+    try:
+        for line in stdin:
+            if re.match(regex, line):
+                parseLine = line.split()
+                status = int(parseLine[7])
+                size = int(parseLine[8])
 
-            if status not in countStatus.keys():
+                if status not in countStatus.keys():
+                    countLine += 1
+                    continue
+
                 countLine += 1
-                continue
+                totalSize += size
+                countStatus[status] += 1
 
-            countLine += 1
-            totalSize += size
-            countStatus[status] += 1
+                if countLine % 10 == 0:
+                    print_stats(totalSize)
 
-            if countLine % 10 == 0:
-                print_stats(totalSize)
+    except KeyboardInterrupt:
+        print_stats(totalSize)
+        raise
 
-except ValueError:
-    pass
-
-except KeyboardInterrupt:
     print_stats(totalSize)
-    raise
