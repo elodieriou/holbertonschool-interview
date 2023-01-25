@@ -35,10 +35,11 @@ if __name__ == "__main__":
                 size = int(parseLine[8])
 
                 if status not in countStatus.keys():
-                    continue
+                    pass
 
                 countLine += 1
                 totalSize += size
+                countStatus[status] += 1
 
             except BaseException:
                 pass
