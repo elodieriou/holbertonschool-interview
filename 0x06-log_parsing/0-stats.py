@@ -25,24 +25,25 @@ def print_stats(total_size):
             print("{}: {}".format(code, countStatus[code]))
 
 
-try:
-    for line in stdin:
-        parseLine = line.split()
-        status = int(parseLine[7])
-        size = int(parseLine[8])
+if __name__ == "__main__":
+    try:
+        for line in stdin:
+            parseLine = line.split()
+            status = int(parseLine[7])
+            size = int(parseLine[8])
 
-        if status not in countStatus.keys():
-            continue
+            if status not in countStatus.keys():
+                continue
 
-        countLine += 1
-        totalSize += size
-        countStatus[status] += 1
+            countLine += 1
+            totalSize += size
+            countStatus[status] += 1
 
-        if countLine % 10 == 0:
-            print_stats(totalSize)
+            if countLine % 10 == 0:
+                print_stats(totalSize)
 
-except ValueError:
-    pass
+    except ValueError:
+        pass
 
-except KeyboardInterrupt:
-    print_stats(totalSize)
+    except KeyboardInterrupt:
+        print_stats(totalSize)
