@@ -29,16 +29,13 @@ def print_stats(total_size):
 if __name__ == "__main__":
     try:
         for line in stdin:
-            try:
-                parseLine = line.split()
-                status = int(parseLine[7])
-                size = int(parseLine[8])
-                countLine += 1
-                totalSize += size
-                countStatus[status] += 1
+            parseLine = line.split()
+            status = int(parseLine[7])
+            size = int(parseLine[8])
 
-            except BaseException:
-                pass
+            countLine += 1
+            totalSize += size
+            countStatus[status] += 1
 
             if countLine % 10 == 0:
                 print_stats(totalSize)
