@@ -18,10 +18,10 @@ totalSize = 0
 countLine = 0
 
 
-def print_stats(total_size):
+def print_stats():
     """This function defines the stat's format"""
-    print("File size: {}".format(total_size))
-    for code in countStatus:
+    print("File size: {}".format(totalSize))
+    for code in sorted(countStatus.keys()):
         if countStatus[code] > 0:
             print("{}: {}".format(code, countStatus[code]))
 
@@ -33,18 +33,21 @@ if __name__ == "__main__":
             status = int(parseLine[7])
             size = int(parseLine[8])
 
+            if status not in countStatus.keys():
+                continue
+
             countLine += 1
             totalSize += size
             countStatus[status] += 1
 
             if countLine % 10 == 0:
-                print_stats(totalSize)
+                print_stats()
 
     except ValueError:
         pass
 
     except KeyboardInterrupt:
-        print_stats(totalSize)
+        print_stats()
         raise
 
-    print_stats(totalSize)
+    print_stats()
