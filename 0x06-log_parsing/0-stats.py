@@ -30,8 +30,8 @@ if __name__ == "__main__":
     try:
         for line in stdin:
             parseLine = line.split()
-            status = int(parseLine[7])
-            size = int(parseLine[8])
+            status = int(parseLine[-1])
+            size = int(parseLine[-2])
 
             countLine += 1
             totalSize += size
