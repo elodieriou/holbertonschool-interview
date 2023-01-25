@@ -31,27 +31,27 @@ def print_stats(total_size):
             print("{}: {}".format(code, countStatus[code]))
 
 
-if __name__ == "__main__":
-    try:
-        for line in stdin:
-            if re.match(regex, line):
-                parseLine = line.split()
-                status = int(parseLine[7])
-                size = int(parseLine[8])
+try:
+    for line in stdin:
+        if re.match(regex, line):
+            parseLine = line.split()
+            status = int(parseLine[7])
+            size = int(parseLine[8])
 
-                if status not in countStatus.keys():
-                    continue
-
+            if status not in countStatus.keys():
                 countLine += 1
-                totalSize += size
-                countStatus[status] += 1
+                continue
 
-                if countLine % 10 == 0:
-                    print_stats(totalSize)
+            countLine += 1
+            totalSize += size
+            countStatus[status] += 1
 
-    except ValueError:
-        pass
+            if countLine % 10 == 0:
+                print_stats(totalSize)
 
-    except KeyboardInterrupt:
-        print_stats(totalSize)
-        raise
+except ValueError:
+    pass
+
+except KeyboardInterrupt:
+    print_stats(totalSize)
+    raise
