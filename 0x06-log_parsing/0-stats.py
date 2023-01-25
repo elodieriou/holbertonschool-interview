@@ -2,6 +2,7 @@
 """This module defines a script that reads stdin line by line
  and computes metrics"""
 from sys import stdin
+import re
 
 countStatus = {
     200: 0,
@@ -15,6 +16,9 @@ countStatus = {
 }
 totalSize = 0
 countLine = 0
+regex = r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - "
+regex += r"\[[\d\-:.\s]+\] \"[\w\s\/.]+\" "
+regex += r"\d{1,3} \d{1,3}$"
 
 
 def print_stats(total_size):
@@ -28,19 +32,20 @@ def print_stats(total_size):
 if __name__ == "__main__":
     try:
         for line in stdin:
-            parseLine = line.split()
-            status = int(parseLine[7])
-            size = int(parseLine[8])
+            if re.match(regex, line):
+                parseLine = line.split()
+                status = int(parseLine[7])
+                size = int(parseLine[8])
 
-            if status not in countStatus.keys():
-                continue
+                if status not in countStatus.keys():
+                    continue
 
-            countLine += 1
-            totalSize += size
-            countStatus[status] += 1
+                countLine += 1
+                totalSize += size
+                countStatus[status] += 1
 
-            if countLine % 10 == 0:
-                print_stats(totalSize)
+                if countLine % 10 == 0:
+                    print_stats(totalSize)
 
     except ValueError:
         pass
