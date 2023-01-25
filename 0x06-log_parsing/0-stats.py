@@ -34,8 +34,8 @@ if __name__ == "__main__":
                 status = int(parseLine[7])
                 size = int(parseLine[8])
 
-                if status in countStatus.keys():
-                    pass
+                if status not in countStatus.keys():
+                    continue
 
                 countLine += 1
                 totalSize += size
