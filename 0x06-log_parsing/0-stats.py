@@ -36,6 +36,8 @@ if __name__ == "__main__":
                 totalSize += int(parseLine[8])
 
                 status = int(parseLine[7])
+                if status not in countStatus.keys():
+                    continue
                 countStatus[status] += 1
 
             except ValueError:
