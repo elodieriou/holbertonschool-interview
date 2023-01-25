@@ -2,6 +2,7 @@
 """This module defines a script that reads stdin line by line
  and computes metrics"""
 from sys import stdin
+from time import sleep
 import re
 
 countStatus = {
@@ -51,4 +52,5 @@ if __name__ == "__main__":
         pass
 
     except KeyboardInterrupt:
+        sleep(1)
         print_stats(totalSize)
