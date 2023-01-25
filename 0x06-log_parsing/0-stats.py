@@ -2,7 +2,6 @@
 """This module defines a script that reads stdin line by line
  and computes metrics"""
 from sys import stdin
-from time import sleep
 import re
 
 countStatus = {
@@ -15,8 +14,10 @@ countStatus = {
     405: 0,
     500: 0
 }
+
 totalSize = 0
 countLine = 0
+
 regex = r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - "
 regex += r"\[[\d\-:.\s]+\] \"[\w\s\/.]+\" "
 regex += r"\d{1,3} \d{1,3}$"
@@ -52,5 +53,5 @@ if __name__ == "__main__":
         pass
 
     except KeyboardInterrupt:
-        sleep(1)
         print_stats(totalSize)
+        raise
