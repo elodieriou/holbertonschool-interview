@@ -16,5 +16,5 @@ int is_palindrome(unsigned long n)
 		num = num / 10;
 	}
 
-	return reversed == n
+	return reversed == n;
 }
