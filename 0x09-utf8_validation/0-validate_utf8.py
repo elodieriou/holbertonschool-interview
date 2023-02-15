@@ -18,6 +18,7 @@ def validUTF8(data) -> bool:
     """
     number_bytes = 0
     mask1 = 1 << 7
+    mask0 = 1 << 6
 
     for i in data:
 
@@ -31,7 +32,7 @@ def validUTF8(data) -> bool:
                 return False
 
         else:
-            if not (i & mask1):
+            if not (i & mask1 and not (i & mask0)):
                 return False
 
         number_bytes -= 1
