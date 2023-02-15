@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """UTF-8 Validation"""
-from typing import List
 
 
 def count_ones(n: int) -> int:
@@ -14,7 +13,7 @@ def count_ones(n: int) -> int:
     return count
 
 
-def validUTF8(data: List[int]) -> bool:
+def validUTF8(data) -> bool:
     """ Check if a given data set represents a valid UTF-8 encoding
     """
     number_bytes = 0
