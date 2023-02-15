@@ -3,6 +3,17 @@
 from typing import List
 
 
+def count_ones(n: int) -> int:
+    """ Count the number of one at the beginning of binary number
+    """
+    count = 0
+    mask = 1 << 7
+    while mask & n:
+        count += 1
+        mask = mask >> 1
+    return count
+
+
 def validUTF8(data: List[int]) -> bool:
     """ Check if a given data set represents a valid UTF-8 encoding
     """
@@ -26,14 +37,3 @@ def validUTF8(data: List[int]) -> bool:
 
         number_bytes -= 1
     return number_bytes == 0
-
-
-def count_ones(n: int) -> int:
-    """ Count the number of one at the beginning of binary number
-    """
-    count = 0
-    mask = 1 << 7
-    while mask & n:
-        count += 1
-        mask = mask >> 1
-    return count
