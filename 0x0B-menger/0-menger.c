@@ -1,7 +1,7 @@
 #include "menger.h"
 
 /**
- * merger - Function that draws a 2D Menger Sponge
+ * menger - Function that draws a 2D Menger Sponge
  * @level: the level of the menger sponge to draw
  * Return: Nothing
  */
