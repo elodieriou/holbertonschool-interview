@@ -47,8 +47,8 @@ def n_queens(size):
     solutions = []
     solve_n_queens(board, 0, size, solutions)
 
-    for sol in solutions:
-        print(sol)
+    for solution in solutions:
+        print(solution)
 
 
 def validate():
