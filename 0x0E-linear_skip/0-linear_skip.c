@@ -27,6 +27,13 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 	return (linear_search(current, tmp, value));
 }
 
+/**
+ * linear_search - Function that linear search the value
+ * @current: Pointer to the value that move
+ * @tmp: Pointer to tmp value search
+ * @value: Value to find
+ * Return: NULL or pointer to the node find
+ */
 skiplist_t *linear_search(skiplist_t *current, skiplist_t *tmp, int value)
 {
 	if (current->n < value)
