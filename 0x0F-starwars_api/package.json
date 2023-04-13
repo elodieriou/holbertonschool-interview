@@ -1,8 +1,0 @@
-{
-  "name": "holbertonschool-interview",
-  "version": "1.0.0",
-  "dependencies": {
-    "request": "^2.88.2",
-    "semistandard": "^16.0.1"
-  }
-}
