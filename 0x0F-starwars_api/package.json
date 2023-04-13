@@ -1,0 +1,12 @@
+{
+  "name": "holbertonschool-interview",
+  "version": "1.0.0",
+  "dependencies": {
+    "request": "^2.88.2",
+    "semistandard": "^16.0.1",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0"
+  }
+}
