@@ -7,13 +7,19 @@ def rain(walls):
     after it rains.
     """
 
-    if not walls or walls is None:
+    if not walls:
+        return 0
+
+    allInt = all(isinstance(element, int) for element in walls)
+    if not allInt:
         return 0
 
     area = 0
     length = len(walls)
 
     for i in range(length):
+        if not isinstance(i, int):
+            return 0
         if walls[i] == 0:
             continue
         count = 0
