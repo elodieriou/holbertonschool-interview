@@ -10,27 +10,18 @@ def rain(walls):
     if not walls:
         return 0
 
-    allInt = all(isinstance(element, int) for element in walls)
-    if not allInt:
-        return 0
-
-    area = 0
+    count = 0
     length = len(walls)
 
-    for i in range(length):
-        if not isinstance(i, int):
-            return 0
-        if walls[i] == 0:
-            continue
-        count = 0
+    for i in range(1, length - 1):
+        left = walls[i]
+        for j in range(i):
+            left = max(left, walls[j])
 
-        for j in range(i + 1, length):
-            if walls[j] != 0 or j == length - 1:
-                break
-            count += 1
+        right = walls[i]
+        for k in range(i + 1, length):
+            right = max(right, walls[k])
 
-        if i < length - 1:
-            min_wall = min(walls[i], walls[i + count + 1])
-            area += count * min_wall
+        count += min(left, right) - walls[i]
 
-    return area
+    return count
