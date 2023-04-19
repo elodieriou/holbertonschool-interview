@@ -7,7 +7,7 @@ def rain(walls):
     after it rains.
     """
 
-    if len(walls) == 0:
+    if len(walls) == 0 or not isinstance(walls, list):
         return 0
 
     area = 0
