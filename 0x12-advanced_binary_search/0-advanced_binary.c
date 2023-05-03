@@ -22,7 +22,7 @@ void print_array(int *array, size_t left, size_t right)
 }
 
 /**
- * binary_search_left -Function that searches the first occurrence of a value
+ * binary_search_left - Function that searches the first occurrence of a value
  * @array: Pointer to the first element of the array
  * @left: The left index of the search range
  * @right: The right index of the search range
@@ -32,31 +32,29 @@ void print_array(int *array, size_t left, size_t right)
  */
 int binary_search_left(int *array, size_t left, size_t right, int value)
 {
-	 size_t mid;
+	size_t mid;
 
-	 if (value == array[left])
-	 {
-		 print_array(array, left, right);
-		 return (left);
-	 }
+	if (value == array[left])
+	{
+		print_array(array, left, right);
+		return (left);
+	}
 
-	 if (left > right)
-		 return (-1);
-	 else
-	 {
-		 print_array(array, left, right);
-		 mid = left + (right - left) / 2;
+	if (left > right)
+		return (-1);
 
-		 if (value > array[mid])
-			 return (binary_search_left(array, mid + 1, right, value));
-		 else
-			 return (binary_search_left(array, left, mid, value));
-	 }
+	print_array(array, left, right);
+	mid = left + (right - left) / 2;
+
+	if (value > array[mid])
+		return (binary_search_left(array, mid + 1, right, value));
+	else
+		return (binary_search_left(array, left, mid, value));
 }
 
 /**
- * binary_search - Function that searches for a value in an sorted of integers
- * using Advanced Binary Search Algorithm
+ * advanced_binary - Function that searches for a value in an sorted of
+ * integers using Advanced Binary Search Algorithm
  * @array: Pointer to the first element of the array
  * @size: The number of elements in array
  * @value: The value to search for
