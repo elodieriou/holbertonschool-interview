@@ -34,19 +34,19 @@ int binary_search_left(int *array, size_t left, size_t right, int value)
 {
 	size_t mid;
 
+	if (left > right)
+		return (-1);
+
 	if (value == array[left])
 	{
 		print_array(array, left, right);
 		return (left);
 	}
 
-	if (left > right)
-		return (-1);
-
 	print_array(array, left, right);
 	mid = left + (right - left) / 2;
 
-	if (value > array[mid])
+	if (value >= array[mid])
 		return (binary_search_left(array, mid + 1, right, value));
 	else
 		return (binary_search_left(array, left, mid, value));
