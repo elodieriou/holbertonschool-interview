@@ -46,11 +46,8 @@ int binary_search_left(int *array, size_t left, size_t right, int value)
 
 	if (value > array[mid])
 		return (binary_search_left(array, mid + 1, right, value));
-
-	if (value <= array[mid])
+	else
 		return (binary_search_left(array, left, mid, value));
-
-	return (-1);
 }
 
 /**
