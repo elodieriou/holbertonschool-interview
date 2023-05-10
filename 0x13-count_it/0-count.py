@@ -4,7 +4,8 @@ import requests
 
 
 def count_words(subreddit, word_list, word_dict={}, after=""):
-    """"""
+    """This method requests the api reddit to return the number time that
+    a word is counted in the title of all article for a given subreddit"""
     lower_word_list = [word.lower() for word in word_list]
 
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
