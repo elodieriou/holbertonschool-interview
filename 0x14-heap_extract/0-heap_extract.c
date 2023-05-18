@@ -16,6 +16,13 @@ int heap_extract(heap_t **root)
 	value = (*root)->n;
 	last_node = find_last_node(*root);
 
+	if ((*root) == last_node)
+	{
+		free(*root);
+		*root = NULL;
+		return (value);
+	}
+
 	if (last_node->parent != NULL && last_node->parent->left == last_node)
 		last_node->parent->left = NULL;
 	if (last_node->parent != NULL && last_node->parent->right == last_node)
