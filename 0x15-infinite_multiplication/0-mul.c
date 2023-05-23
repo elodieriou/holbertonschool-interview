@@ -82,6 +82,8 @@ void multiply(char *str1, char *str2)
 	for (i = 0; i < total - 1; i++)
 		_putchar(res[i] + '0');
 	_putchar('\n');
+
+	free(res);
 }
 
 /**
