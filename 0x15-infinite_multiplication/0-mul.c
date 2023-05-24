@@ -51,14 +51,14 @@ int _strlen(char *str)
  * multiply - function that computes the product of infinite numbers
  * @str1: the argument with number 1
  * @str2: the argument with number 2
- * @len1: the length of number 1
- * @len2: the length of number 2
  * Return: Nothing
  */
 
-void multiply(char *str1, char *str2, int len1, int len2)
+void multiply(char *str1, char *str2)
 {
 	int i, j, num1, num2, carry;
+	int len1 = _strlen(str1);
+	int len2 = _strlen(str2);
 	int total = len1 + len2;
 	int *res = malloc(sizeof(int) * total);
 
@@ -104,12 +104,6 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	int len1 = _strlen(num1);
-	int len2 = _strlen(num2);
-
-	if (len1 == 0 || len2 == 0)
-		_putchar(0);
-
-	multiply(num1, num2, len1, len2);
+	multiply(num1, num2);
 	return (0);
 }
