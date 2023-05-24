@@ -28,8 +28,8 @@ void print_error(void)
 
 	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
-
 }
+
 
 /**
  * _strlen - function that calculates the length of a string
@@ -77,6 +77,12 @@ void multiply(char *str1, char *str2)
 		}
 		if (carry > 0)
 			res[i + j] %= 10;
+	}
+
+	while (*res == 0)
+	{
+		res++;
+		total--;
 	}
 
 	for (i = 0; i < total - 1; i++)
