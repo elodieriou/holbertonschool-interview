@@ -78,12 +78,6 @@ void multiply(char *str1, char *str2, int len1, int len2)
 			res[i + j] += carry;
 	}
 
-	while (*res == 0)
-	{
-		res += 1;
-		total -= 1;
-	}
-
 	for (i = 0; i < total - 1; i++)
 		_putchar(res[i] + '0');
 	_putchar('\n');
