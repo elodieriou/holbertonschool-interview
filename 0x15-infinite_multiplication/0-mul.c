@@ -53,14 +53,11 @@ int _strlen(char *str)
  * @str2: the argument with number 2
  * Return: Nothing
  */
-
-void multiply(char *str1, char *str2)
+void multiply(char *str1, char *str2, int len1, int len2)
 {
 	int i, j, num1, num2, carry;
-	int len1 = _strlen(str1);
-	int len2 = _strlen(str2);
 	int total = len1 + len2;
-	int *res = malloc(sizeof(int) * total);
+	char *res = malloc(sizeof(char) * (total + 1));
 
 	if (res == NULL)
 		return;
@@ -77,7 +74,7 @@ void multiply(char *str1, char *str2)
 			res[i + j] %= 10;
 		}
 		if (carry > 0)
-			res[i + j] %= 10;
+			res[i + j] += carry;
 	}
 
 	for (i = 0; i < total - 1; i++)
@@ -97,6 +94,7 @@ int main(int argc, char *argv[])
 {
 	char *num1 = argv[1];
 	char *num2 = argv[2];
+	int len1 = 0, len2 = 0;
 
 	if (argc != 3 || _isdigit(num1) == 0 || _isdigit(num2) == 0)
 	{
@@ -104,6 +102,20 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	multiply(num1, num2);
+	if (num1 == 0 || num2 == 0)
+	{
+		_putchar(0);
+		return (0);
+	}
+
+	len1 = _strlen(num1);
+	len2 = _strlen(num2);
+	if (len1 == 0 || len2 == 0)
+	{
+		_putchar(0);
+		return (0);
+	}
+
+	multiply(num1, num2, len1, len2);
 	return (0);
 }
