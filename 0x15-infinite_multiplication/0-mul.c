@@ -31,7 +31,6 @@ void print_error(char *str)
 	_putchar('\n');
 }
 
-
 /**
  * _strlen - function that calculates the length of a string
  * @str: the string
@@ -49,10 +48,10 @@ int _strlen(char *str)
 
 /**
  * multiply - function that computes the product of infinite numbers
- * @str1: the argument with number 1
- * @str2: the argument with number 2
- * @len1: the length of the number 1 in string
- * @len2: the length of the number 2 in string
+ * @str1: the number 1 in string
+ * @str2: the number 2 in string
+ * @len1: the length of the number 1
+ * @len2: the length of the number 2
  * Return: Nothing
  */
 void multiply(char *str1, char *str2, int len1, int len2)
@@ -79,6 +78,12 @@ void multiply(char *str1, char *str2, int len1, int len2)
 			res[i + j] += carry;
 	}
 
+	while (*res == 0)
+	{
+		res += 1;
+		total -= 1;
+	}
+
 	for (i = 0; i < total - 1; i++)
 		_putchar(res[i] + '0');
 	_putchar('\n');
@@ -96,7 +101,7 @@ int main(int argc, char *argv[])
 {
 	char *num1 = argv[1];
 	char *num2 = argv[2];
-	int len1 = 0, len2 = 0;
+	int len1, len2;
 
 	if (argc != 3 || _isdigit(num1) == 0 || _isdigit(num2) == 0)
 	{
