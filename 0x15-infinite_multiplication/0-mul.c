@@ -51,6 +51,8 @@ int _strlen(char *str)
  * multiply - function that computes the product of infinite numbers
  * @str1: the argument with number 1
  * @str2: the argument with number 2
+ * @len1: the length of the number 1 in string
+ * @len2: the length of the number 2 in string
  * Return: Nothing
  */
 void multiply(char *str1, char *str2, int len1, int len2)
