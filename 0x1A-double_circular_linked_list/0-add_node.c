@@ -2,7 +2,7 @@
 
 /**
  * add_node_end - Function that add a new node to the end of a
- * double circular and doubly linked list
+ * double circular linked list
  * @list: Double pointer to the head of list
  * @str: String to copy into the new node
  * Return: Address of the new node inserted in the list
@@ -36,7 +36,7 @@ List *add_node_end(List **list, char *str)
 
 /**
  * add_node_begin - Function that add a new node to the beginning of a
- * double circular and doubly linked list
+ * double circular linked list
  * @list: Double pointer to the head of list
  * @str: String to copy into the new node
  * Return: Address of the new node inserted in the list
