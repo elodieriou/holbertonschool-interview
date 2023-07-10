@@ -43,7 +43,7 @@ List *add_node_end(List **list, char *str)
  */
 List *add_node_begin(List **list, char *str)
 {
-	List *node, *last;
+	List *node, *last_node;
 
 	if (list == NULL && str == NULL)
 		return (NULL);
@@ -58,11 +58,10 @@ List *add_node_begin(List **list, char *str)
 
 	else
 	{
-		last = (*list)->prev;
+		last_node = (*list)->prev;
 		node->next = *list;
-		node->prev = last;
-
-		last->next = (*list)->prev = node;
+		node->prev = last_node;
+		last_node->next = (*list)->prev = node;
 		*list = node;
 	}
 
