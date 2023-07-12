@@ -14,7 +14,19 @@ List *add_node_end(List **list, char *str)
 	if (list == NULL && str == NULL)
 		return (NULL);
 
-	node = create_new_node(str);
+	new_node = malloc(sizeof(List));
+	if (new_node == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->str = strdup(str);
+	if (new_node->str == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
 
 	if (*list == NULL)
 	{
@@ -48,7 +60,19 @@ List *add_node_begin(List **list, char *str)
 	if (list == NULL && str == NULL)
 		return (NULL);
 
-	node = create_new_node(str);
+	new_node = malloc(sizeof(List));
+	if (new_node == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->str = strdup(str);
+	if (new_node->str == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
 
 	if (*list == NULL)
 	{
@@ -66,31 +90,4 @@ List *add_node_begin(List **list, char *str)
 	}
 
 	return (node);
-}
-
-/**
- * create_new_node - Function that create a new node
- * @str: String to copy into the new node
- * Return: Address of the new node created
- */
-
-List *create_new_node(char *str)
-{
-	List *new_node;
-
-	new_node = malloc(sizeof(List));
-	if (new_node == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-
-	new_node->str = strdup(str);
-	if (new_node->str == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-
-	return (new_node);
 }

@@ -22,7 +22,6 @@ typedef struct List
 } List;
 
 List *add_node_end(List **list, char *str);
-List *create_new_node(char *str);
 List *add_node_begin(List **list, char *str);
 
 #endif /* LIST_H */
