@@ -1,25 +1,28 @@
 #include "regex.h"
 
-int regex_match(char const *str, char const *pattern) {
-	if (*str == '\0' && *pattern == '\0') {
-		return 1;
-	}
+/**
+ * regex_match - function that checks whether a given pattern matches
+ * a given string
+ * @str: the string to scan
+ * @pattern: the regular expression
+ * Return: 1 if the pattern matches the string, 0 otherwise
+ */
+int regex_match(char const *str, char const *pattern)
+{
+	if (*str == '\0' && *pattern == '\0')
+		return (1);
 
-	if (*str != '\0' && (*str == *pattern || *pattern == '.')) {
-		if (*(pattern + 1) == '*') {
-			// Case 1: '*' matches zero occurrences of the preceding character
-			if (regex_match(str, pattern + 2)) {
+	if (*str != '\0' && (*str == *pattern || *pattern == '.'))
+	{
+		if (*(pattern + 1) == '*')
+		{
+			if (regex_match(str, pattern + 2))
 				return (1);
-			}
-			// Case 2: '*' matches one or more occurrences of the preceding character
 			return (regex_match(str + 1, pattern));
-		} else {
+		} else
 			return (regex_match(str + 1, pattern + 1));
-		}
-	} else if (*(pattern + 1) == '*') {
-		// Handle the '*' operator when there's no match in the current characters
+	} else if (*(pattern + 1) == '*')
 		return (regex_match(str, pattern + 2));
-	}
 
 	return (0);
 }
