@@ -8,7 +8,9 @@
  */
 int is_valid(int *word_count, int nb_words)
 {
-	for (int i = 0; i < nb_words; i++)
+	int i;
+
+	for (i = 0; i < nb_words; i++)
 		if (word_count[i] != 0)
 			return (0);
 	return (1);
