@@ -2,42 +2,29 @@
 """This module defines the isWinner function"""
 
 
-def is_prime(n):
-    """Define if a number is prime or not"""
-    if n < 2:
-        return False
-    for i in range(2, int(n ** 0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def get_largest_prime(n):
-    """Define the largest prime number that's less than or equal
-     to a given number"""
-    for i in range(n, 1, -1):
-        if is_prime(i):
-            return i
-    return None
-
-
 def isWinner(x, nums):
-    """Define who is winner"""
-    Maria_wins = 0
-    Ben_wins = 0
-    for i in range(x):
-        n = nums[i]
-        largest_prime = get_largest_prime(n)
-        if largest_prime is None:
-            Ben_wins += 1
-        elif largest_prime % 2 == 0:
-            Maria_wins += 1
+    """
+        function to know who wins at prime game
+        args:
+            x: the number of rounds
+            nums: an array of n
+        return:
+            MAria or Ben wins
+    """
+    maria = 0
+    ben = 0
+    for round in range(0, x):
+        nb_of_prime = 0
+        limit = nums[round]
+        for num in range(2, limit + 1):
+            for modulo in range(2, int(num / 2) + 1):
+                if num % modulo != 0:
+                    nb_of_prime += 1
+        if nb_of_prime % 2 == 0:
+            ben += 1
         else:
-            Ben_wins += 1
-
-    if Maria_wins > Ben_wins:
+            maria += 1
+    if maria > ben:
         return 'Maria'
-    elif Ben_wins > Maria_wins:
-        return 'Ben'
     else:
-        return None
+        return 'Ben'
